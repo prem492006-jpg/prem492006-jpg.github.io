@@ -128,8 +128,6 @@ function setupEventListeners() {
         if (e.target === certModal) closeModal();
     });
 
-    // Contact form
-    contactForm.addEventListener('submit', handleFormSubmit);
 }
 
 /**
