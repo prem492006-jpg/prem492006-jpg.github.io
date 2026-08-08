@@ -272,25 +272,7 @@ document.addEventListener('keydown', (e) => {
  * OPTION 3: Using mailto (Simplest)
  * Change the form to use: mailto:[your-email]@example.com
  */
-function handleFormSubmit(e) {
-    e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    // Option A: Open default email client
-    // Uncomment below to use mailto:
-    /*
-    window.location.href = `mailto:[Your Email]?subject=Message from ${name}&body=${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${name} (${email})`;
-    */
-
-    // Option B: Show success message (for demo purposes)
-    alert(`Thank you for your message, ${name}!\n\nSince this is a frontend-only portfolio, please use:\n\n1. Formspree.io - For form handling\n2. EmailJS - For client-side email\n3. Your email client - For direct contact\n\nPlease refer to the script.js comments for setup instructions.`);
-
-    // Clear form
-    contactForm.reset();
-}
 
 // ====================================
 // SCROLL ANIMATIONS
