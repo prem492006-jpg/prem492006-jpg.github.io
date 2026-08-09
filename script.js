@@ -1,12 +1,12 @@
-/* ====================================
-   PORTFOLIO JAVASCRIPT
-   ==================================== */
+```javascript
+/* =========================================================
+   PREM KUMAR PORTFOLIO — MODERN JAVASCRIPT
+   ========================================================= */
 
-// ====================================
-// DATA STRUCTURES
-// ====================================
+/* =========================================================
+   DATA
+   ========================================================= */
 
-// Skills data - Easy to update
 const skillsData = [
     { name: 'HTML5', icon: '📝', description: 'Semantic markup' },
     { name: 'CSS3', icon: '🎨', description: 'Modern styling' },
@@ -19,19 +19,6 @@ const skillsData = [
     { name: 'Git', icon: '📦', description: 'Version control' },
     { name: 'GitHub', icon: '🐙', description: 'Code hosting' }
 ];
-
-// Certificates data - Easy to update
-// TO ADD NEW CERTIFICATES:
-// 1. Add image to images/certificates/ folder
-// 2. Add new object to this array with matching image path
-// Example:
-// {
-//     image: 'images/certificates/certificate4.jpg',
-//     title: 'Advanced Web Development',
-//     organization: 'Some Platform',
-//     date: '2024',
-//     link: 'certificates/certificate4.pdf'
-// }
 
 const certificatesData = [
     {
@@ -64,315 +51,991 @@ const certificatesData = [
     }
 ];
 
-// ====================================
-// DOM ELEMENTS
-// ====================================
+
+/* =========================================================
+   DOM ELEMENTS
+   ========================================================= */
 
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navbar = document.getElementById('navbar');
+
 const skillsGrid = document.getElementById('skillsGrid');
 const certificatesGrid = document.getElementById('certificatesGrid');
+
 const contactForm = document.getElementById('contactForm');
+
 const backToTop = document.getElementById('backToTop');
+
 const certModal = document.getElementById('certModal');
 const modalImage = document.getElementById('modalImage');
 const modalClose = document.querySelector('.modal-close');
 
-// ====================================
-// INITIALIZATION
-// ====================================
+
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
+
     renderSkills();
     renderCertificates();
-    setupEventListeners();
-    setupScrollAnimations();
+
+    setupMobileMenu();
     setupNavigation();
+    setupScrollAnimations();
+
+    setupCertificateModal();
+    setupBackToTop();
+
+    setupThemeToggle();
+    setupMouseGlow();
+
+    setupCardTilt();
+    setupContactForm();
+
+    setupLazyLoading();
+
+    updateActiveNavLink();
+
+    console.log(
+        "%c✨ Welcome to Prem Kumar's Portfolio",
+        "font-size:20px;color:#5a67d8;font-weight:bold;"
+    );
+
+    console.log(
+        "%cModern Portfolio Loaded 🚀",
+        "font-size:14px;color:#00d4ff;"
+    );
 });
 
-// ====================================
-// NAVIGATION & MENU
-// ====================================
 
-/**
- * Setup hamburger menu toggle
- */
-function setupEventListeners() {
-    // Hamburger menu toggle
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+function setupMobileMenu() {
+
+    if (!hamburger || !navMenu) return;
+
     hamburger.addEventListener('click', () => {
+
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+
+        const expanded =
+            hamburger.classList.contains('active');
+
+        hamburger.setAttribute(
+            'aria-expanded',
+            expanded
+        );
     });
 
-    // Close menu when link is clicked
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks =
+        document.querySelectorAll('.nav-link');
+
     navLinks.forEach(link => {
+
         link.addEventListener('click', () => {
+
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+
+            hamburger.setAttribute(
+                'aria-expanded',
+                'false'
+            );
         });
-    });
 
-    // Back to top button
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     });
-
-    // Modal close
-    modalClose.addEventListener('click', closeModal);
-    certModal.addEventListener('click', (e) => {
-        if (e.target === certModal) closeModal();
-    });
-
 }
 
-/**
- * Setup navbar active state on scroll
- */
+
+/* =========================================================
+   NAVBAR + ACTIVE SECTION
+   ========================================================= */
+
 function setupNavigation() {
+
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-        // Show/hide back to top button
-        if (window.scrollY > 300) {
-            backToTop.classList.add('show');
-            navbar.classList.add('scrolled');
-        } else {
-            backToTop.classList.remove('show');
-            navbar.classList.remove('scrolled');
+
+        if (!ticking) {
+
+            window.requestAnimationFrame(() => {
+
+                handleScroll();
+
+                ticking = false;
+
+            });
+
+            ticking = true;
         }
 
-        // Update active nav link
-        updateActiveNavLink();
-    });
+    }, { passive: true });
 }
 
-/**
- * Update active navigation link based on scroll position
- */
+
+function handleScroll() {
+
+    const scrollY = window.scrollY;
+
+    /* Navbar effect */
+
+    if (scrollY > 50) {
+
+        navbar?.classList.add('scrolled');
+
+    } else {
+
+        navbar?.classList.remove('scrolled');
+
+    }
+
+
+    /* Back to top */
+
+    if (scrollY > 500) {
+
+        backToTop?.classList.add('show');
+
+    } else {
+
+        backToTop?.classList.remove('show');
+
+    }
+
+
+    updateActiveNavLink();
+}
+
+
 function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPosition = window.scrollY + 100;
+
+    const sections =
+        document.querySelectorAll('section[id]');
+
+    const navLinks =
+        document.querySelectorAll('.nav-link');
+
+    const scrollPosition =
+        window.scrollY + 180;
+
+    let currentSection = '';
 
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            // Remove active class from all links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            // Add active class to current link
-            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+
+        if (
+            scrollPosition >= top &&
+            scrollPosition < top + height
+        ) {
+
+            currentSection =
+                section.getAttribute('id');
+
         }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove('active');
+
+        const target =
+            link.getAttribute('href');
+
+        if (
+            currentSection &&
+            target === `#${currentSection}`
+        ) {
+
+            link.classList.add('active');
+
+        }
+
     });
 }
 
-// ====================================
-// RENDER SKILLS
-// ====================================
 
-/**
- * Render skills from data
- */
+/* =========================================================
+   RENDER SKILLS
+   ========================================================= */
+
 function renderSkills() {
-    skillsGrid.innerHTML = skillsData.map(skill => `
-        <div class="skill-card fade-in">
-            <div class="skill-icon">${skill.icon}</div>
-            <h3 class="skill-name">${skill.name}</h3>
-            <p class="skill-description">${skill.description}</p>
+
+    if (!skillsGrid) return;
+
+    skillsGrid.innerHTML =
+        skillsData.map((skill, index) => `
+
+        <div
+            class="skill-card scroll-fade"
+            style="--delay:${index * 80}ms"
+        >
+
+            <div class="skill-icon">
+                ${skill.icon}
+            </div>
+
+            <h3 class="skill-name">
+                ${skill.name}
+            </h3>
+
+            <p class="skill-description">
+                ${skill.description}
+            </p>
+
         </div>
+
     `).join('');
 }
 
-// ====================================
-// RENDER CERTIFICATES
-// ====================================
 
-/**
- * Render certificates from data
- */
+/* =========================================================
+   RENDER CERTIFICATES
+   ========================================================= */
+
 function renderCertificates() {
-    certificatesGrid.innerHTML = certificatesData.map((cert, index) => `
-        <div class="certificate-card fade-in">
-            <img 
-                src="${cert.image}" 
-                alt="${cert.title}" 
+
+    if (!certificatesGrid) return;
+
+    certificatesGrid.innerHTML =
+        certificatesData.map((cert, index) => `
+
+        <article
+            class="certificate-card scroll-fade"
+            style="--delay:${index * 100}ms"
+        >
+
+            <img
+                src="${cert.image}"
+                alt="${cert.title}"
                 class="certificate-image"
-                onclick="openCertificateModal('${cert.image}', '${cert.title}')"
+                loading="lazy"
+                data-certificate="${cert.image}"
+                data-title="${cert.title}"
             >
+
             <div class="certificate-details">
-                <h3 class="certificate-title">${cert.title}</h3>
-                <p class="certificate-org">${cert.organization}</p>
-                <p class="certificate-date">${cert.date}</p>
-                <a href="${cert.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary certificate-button" style="margin-top: auto;">
+
+                <h3 class="certificate-title">
+                    ${cert.title}
+                </h3>
+
+                <p class="certificate-org">
+                    ${cert.organization}
+                </p>
+
+                <p class="certificate-date">
+                    ${cert.date}
+                </p>
+
+                <a
+                    href="${cert.link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary certificate-button"
+                >
                     View Certificate
                 </a>
+
             </div>
-        </div>
+
+        </article>
+
     `).join('');
 }
 
-/**
- * Open certificate modal
- */
-function openCertificateModal(imageSrc, title) {
+
+/* =========================================================
+   CERTIFICATE MODAL
+   ========================================================= */
+
+function setupCertificateModal() {
+
+    if (!certificatesGrid || !certModal) return;
+
+    certificatesGrid.addEventListener(
+        'click',
+        event => {
+
+            const image =
+                event.target.closest(
+                    '.certificate-image'
+                );
+
+            if (!image) return;
+
+            openCertificateModal(
+                image.dataset.certificate,
+                image.dataset.title
+            );
+
+        }
+    );
+
+
+    modalClose?.addEventListener(
+        'click',
+        closeModal
+    );
+
+
+    certModal.addEventListener(
+        'click',
+        event => {
+
+            if (event.target === certModal) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        'keydown',
+        event => {
+
+            if (
+                event.key === 'Escape' &&
+                certModal.classList.contains('active')
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+}
+
+
+function openCertificateModal(
+    imageSrc,
+    title
+) {
+
+    if (!certModal || !modalImage) return;
+
     modalImage.src = imageSrc;
     modalImage.alt = title;
+
     certModal.classList.add('active');
-    // Prevent body scroll
+
     document.body.style.overflow = 'hidden';
+
 }
 
-/**
- * Close certificate modal
- */
+
 function closeModal() {
+
+    if (!certModal) return;
+
     certModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+
+    document.body.style.overflow = '';
+
 }
 
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && certModal.classList.contains('active')) {
-        closeModal();
-    }
-});
 
-// ====================================
-// FORM HANDLING
-// ====================================
+/* =========================================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================================= */
 
-/**
- * Handle contact form submission
- * 
- * IMPORTANT: This is frontend only and doesn't send emails.
- * To enable email functionality, choose one:
- * 
- * OPTION 1: Using Formspree (Recommended)
- * 1. Go to https://formspree.io/
- * 2. Create account and verify your email
- * 3. Create new form and copy your form ID
- * 4. Change form action: <form action="https://formspree.io/f/YOUR_ID" method="POST">
- * 5. Remove this JavaScript handler
- * 
- * OPTION 2: Using EmailJS
- * 1. Go to https://www.emailjs.com/
- * 2. Create account and get API credentials
- * 3. Install EmailJS via CDN in HTML head
- * 4. Replace this function with EmailJS code from their docs
- * 
- * OPTION 3: Using mailto (Simplest)
- * Change the form to use: mailto:[your-email]@example.com
- */
-
-
-// ====================================
-// SCROLL ANIMATIONS
-// ====================================
-
-/**
- * Setup Intersection Observer for fade-in animations
- */
 function setupScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
+    const elements =
+        document.querySelectorAll(
+            '.scroll-fade'
+        );
+
+    if (!elements.length) return;
+
+
+    /* Fallback */
+
+    if (!('IntersectionObserver' in window)) {
+
+        elements.forEach(element => {
+
+            element.classList.add('visible');
+
         });
-    }, observerOptions);
 
-    // Observe all elements with fade-in class
-    document.querySelectorAll('.scroll-fade, .fade-in').forEach(element => {
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    const element =
+                        entry.target;
+
+                    const delay =
+                        element.style
+                            .getPropertyValue('--delay');
+
+                    if (delay) {
+
+                        element.style.transitionDelay =
+                            delay;
+
+                    }
+
+                    element.classList.add('visible');
+
+                    observer.unobserve(element);
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin:
+                    '0px 0px -60px 0px'
+            }
+        );
+
+
+    elements.forEach(element => {
+
         observer.observe(element);
-    });
 
-    // Also observe sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
     });
 }
 
-// ====================================
-// UTILITY FUNCTIONS
-// ====================================
 
-/**
- * Smooth scroll to element
- */
-function smoothScroll(target) {
-    const element = document.querySelector(target);
-    if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
 
-/**
- * Debounce function for scroll events
- */
-function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func.apply(this, args), delay);
-    };
-}
+function setupBackToTop() {
 
-// ====================================
-// ACCESSIBILITY ENHANCEMENTS
-// ====================================
+    if (!backToTop) return;
 
-// Skip to content link
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab' && !e.shiftKey) {
-        const navbar = document.querySelector('.navbar');
-        if (navbar && navbar.classList.contains('scrolled') === false) {
-            // Already handled by browser default
+    backToTop.addEventListener(
+        'click',
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
         }
-    }
-});
-
-// ====================================
-// PERFORMANCE OPTIMIZATIONS
-// ====================================
-
-// Lazy load images (if needed for certificates)
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                }
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
+    );
 }
 
-// ====================================
-// CONSOLE MESSAGE
-// ====================================
 
-console.log('%c✨ Welcome to Prem Kumar\'s Portfolio', 'font-size: 20px; color: #5a67d8; font-weight: bold;');
-console.log('%cCheck out the source code!', 'font-size: 14px; color: #00d4ff;');
+/* =========================================================
+   DARK / LIGHT THEME
+   ========================================================= */
+
+function setupThemeToggle() {
+
+    /* Create theme button */
+
+    const themeButton =
+        document.createElement('button');
+
+    themeButton.className =
+        'theme-toggle';
+
+    themeButton.type = 'button';
+
+    themeButton.setAttribute(
+        'aria-label',
+        'Toggle theme'
+    );
+
+    themeButton.innerHTML = '☀️';
+
+
+    /* Add button to navigation */
+
+    const navContainer =
+        document.querySelector(
+            '.nav-container'
+        );
+
+    if (navContainer) {
+
+        navContainer.insertBefore(
+            themeButton,
+            hamburger
+        );
+
+    }
+
+
+    /* Load saved theme */
+
+    const savedTheme =
+        localStorage.getItem(
+            'portfolio-theme'
+        );
+
+
+    if (savedTheme === 'light') {
+
+        document.body.classList.add(
+            'light-theme'
+        );
+
+        themeButton.innerHTML = '🌙';
+
+    } else {
+
+        themeButton.innerHTML = '☀️';
+
+    }
+
+
+    /* Toggle theme */
+
+    themeButton.addEventListener(
+        'click',
+        () => {
+
+            document.body.classList.toggle(
+                'light-theme'
+            );
+
+            const isLight =
+                document.body.classList.contains(
+                    'light-theme'
+                );
+
+
+            localStorage.setItem(
+                'portfolio-theme',
+                isLight
+                    ? 'light'
+                    : 'dark'
+            );
+
+
+            themeButton.innerHTML =
+                isLight
+                    ? '🌙'
+                    : '☀️';
+
+
+            /* Small animation */
+
+            themeButton.classList.add(
+                'theme-changing'
+            );
+
+            setTimeout(() => {
+
+                themeButton.classList.remove(
+                    'theme-changing'
+                );
+
+            }, 400);
+
+        }
+    );
+}
+
+
+/* =========================================================
+   MOUSE FOLLOW GLOW
+   ========================================================= */
+
+function setupMouseGlow() {
+
+    /* Disable on touch devices */
+
+    if (
+        window.matchMedia(
+            '(hover: none)'
+        ).matches
+    ) return;
+
+
+    const glow =
+        document.createElement('div');
+
+    glow.className =
+        'mouse-glow';
+
+    document.body.appendChild(glow);
+
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let glowX = 0;
+    let glowY = 0;
+
+
+    document.addEventListener(
+        'mousemove',
+        event => {
+
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+        }
+    );
+
+
+    function animateGlow() {
+
+        glowX +=
+            (mouseX - glowX) * 0.08;
+
+        glowY +=
+            (mouseY - glowY) * 0.08;
+
+
+        glow.style.transform =
+            `translate3d(${glowX}px, ${glowY}px, 0)`;
+
+
+        requestAnimationFrame(
+            animateGlow
+        );
+
+    }
+
+
+    animateGlow();
+}
+
+
+/* =========================================================
+   3D CARD HOVER EFFECT
+   ========================================================= */
+
+function setupCardTilt() {
+
+    if (
+        window.matchMedia(
+            '(hover: none)'
+        ).matches
+    ) return;
+
+
+    const cards =
+        document.querySelectorAll(
+            '.skill-card, .certificate-card'
+        );
+
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            'mousemove',
+            event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateX =
+                    ((y - centerY) /
+                        centerY) * -4;
+
+
+                const rotateY =
+                    ((x - centerX) /
+                        centerX) * 4;
+
+
+                card.style.transform =
+                    `perspective(900px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-8px)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            'mouseleave',
+            () => {
+
+                card.style.transform = '';
+
+            }
+        );
+
+    });
+}
+
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+function setupContactForm() {
+
+    if (!contactForm) return;
+
+
+    contactForm.addEventListener(
+        'submit',
+        event => {
+
+            const submitButton =
+                contactForm.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            if (!submitButton) return;
+
+
+            submitButton.disabled = true;
+
+            const originalText =
+                submitButton.innerHTML;
+
+
+            submitButton.innerHTML =
+                'Sending...';
+
+
+            /*
+             * Formspree will still handle
+             * the actual submission.
+             */
+
+            setTimeout(() => {
+
+                submitButton.disabled = false;
+
+                submitButton.innerHTML =
+                    originalText;
+
+            }, 3000);
+
+        }
+    );
+}
+
+
+/* =========================================================
+   LAZY IMAGE LOADING
+   ========================================================= */
+
+function setupLazyLoading() {
+
+    const images =
+        document.querySelectorAll(
+            'img[loading="lazy"]'
+        );
+
+
+    if (
+        !('IntersectionObserver' in window)
+    ) return;
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        const image =
+                            entry.target;
+
+                        image.classList.add(
+                            'image-loaded'
+                        );
+
+                        observer.unobserve(
+                            image
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                rootMargin:
+                    '100px'
+            }
+        );
+
+
+    images.forEach(image => {
+
+        observer.observe(image);
+
+    });
+}
+
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
+
+function smoothScroll(target) {
+
+    const element =
+        document.querySelector(target);
+
+    if (!element) return;
+
+
+    const navbarHeight =
+        navbar
+            ? navbar.offsetHeight
+            : 0;
+
+
+    const targetPosition =
+        element.offsetTop -
+        navbarHeight;
+
+
+    window.scrollTo({
+
+        top: targetPosition,
+
+        behavior: 'smooth'
+
+    });
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+   ========================================================= */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        /* Close mobile menu with Escape */
+
+        if (
+            event.key === 'Escape' &&
+            navMenu?.classList.contains(
+                'active'
+            )
+        ) {
+
+            hamburger?.classList.remove(
+                'active'
+            );
+
+            navMenu.classList.remove(
+                'active'
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+   ========================================================= */
+
+const reducedMotion =
+    window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    );
+
+
+if (reducedMotion.matches) {
+
+    document.documentElement.style
+        .scrollBehavior = 'auto';
+
+}
+
+
+/* =========================================================
+   RESIZE HANDLER
+   ========================================================= */
+
+let resizeTimer;
+
+window.addEventListener(
+    'resize',
+    () => {
+
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+
+            /* Close mobile menu */
+
+            if (
+                window.innerWidth > 768
+            ) {
+
+                hamburger?.classList.remove(
+                    'active'
+                );
+
+                navMenu?.classList.remove(
+                    'active'
+                );
+
+            }
+
+        }, 200);
+
+    }
+);
+
+
+/* =========================================================
+   PAGE LOADED
+   ========================================================= */
+
+window.addEventListener(
+    'load',
+    () => {
+
+        document.body.classList.add(
+            'page-loaded'
+        );
+
+    }
+);
+```
