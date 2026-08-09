@@ -1,252 +1,1018 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Prem Kumar - BCA Student and Frontend Developer. Explore my portfolio, projects, and technical skills.">
-    <meta name="keywords" content="Frontend Developer, BCA Student, Web Development, UI/UX, Portfolio">
-    <meta name="author" content="Prem Kumar">
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://premkumar.com">
-    <meta property="og:title" content="Prem Kumar - Frontend Developer">
-    <meta property="og:description" content="BCA Student | Frontend Developer | UI/UX Enthusiast">
-    <meta property="og:image" content="images/profile.jpg">
-    
-    <meta name="theme-color" content="#1a1a2e">
-    <title>Prem Kumar - Frontend Developer Portfolio</title>
-    
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%235a67d8'>P</text></svg>">
-    <link rel="stylesheet" href="style.css">
+
+```
+<meta name="description"
+    content="Prem Kumar - BCA Student, Frontend Developer and UI/UX Enthusiast. Explore my portfolio, skills, certificates and projects.">
+
+<meta name="keywords"
+    content="Prem Kumar, Frontend Developer, BCA Student, Web Developer, UI/UX, HTML, CSS, JavaScript, Portfolio">
+
+<meta name="author" content="Prem Kumar">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prem Kumar | Frontend Developer">
+<meta property="og:description"
+    content="BCA Student | Frontend Developer | UI/UX Enthusiast">
+<meta property="og:image" content="profile.png">
+
+<meta name="theme-color" content="#0a0a0f">
+
+<title>Prem Kumar | Frontend Developer</title>
+
+<!-- Favicon -->
+<link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%237c3aed'>P</text></svg>">
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
+
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-icon">P</span>
-                <span class="logo-text">rem Kumar</span>
-            </div>
-            
-            <div class="hamburger" id="hamburger">
+
+```
+<!-- =========================================
+     PAGE LOADER
+========================================== -->
+
+<div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+        <div class="loader-logo">P</div>
+        <div class="loader-line"></div>
+    </div>
+</div>
+
+
+<!-- =========================================
+     SCROLL PROGRESS
+========================================== -->
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================== -->
+
+<header class="navbar" id="navbar">
+
+    <div class="nav-container">
+
+        <a href="#home" class="nav-logo">
+
+            <span class="logo-box">P</span>
+
+            <span class="logo-name">
+                Prem<span>.</span>
+            </span>
+
+        </a>
+
+
+        <nav class="nav-menu" id="navMenu">
+
+            <a href="#home" class="nav-link active">
+                Home
+            </a>
+
+            <a href="#about" class="nav-link">
+                About
+            </a>
+
+            <a href="#skills" class="nav-link">
+                Skills
+            </a>
+
+            <a href="#certificates" class="nav-link">
+                Certificates
+            </a>
+
+            <a href="#contact" class="nav-link">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <!-- Theme Toggle -->
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle dark and light theme">
+
+                <span class="theme-icon sun-icon">☀</span>
+                <span class="theme-icon moon-icon">☾</span>
+
+            </button>
+
+
+            <!-- Mobile Menu -->
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#certificates " class="nav-link">Certificates</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Hi, I'm <span class="accent">Prem Kumar</span></h1>
-                <p class="hero-subtitle">BCA Student | Frontend Developer | UI/UX Enthusiast</p>
-                <p class="hero-description">
-                    I'm a passionate BCA student interested in frontend development, UI/UX design, and modern web technologies. I enjoy building clean, responsive, and user-friendly digital experiences.
-                </p>
-                
-                <div class="hero-buttons">
-                    <a href="#certificates" class="btn btn-primary">View Certificates</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                </div>
-            </div>
-            
-            <div class="hero-image">
-                <div class="profile-placeholder">
-                    <img src="profile.png" alt="Prem Kumar - Profile Photo" class="profile-img">
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-background"></div>
-    </section>
+            </button>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            
-            <div class="about-content">
-                <div class="about-info">
-                    <div class="info-group">
-                        <label class="info-label">Name</label>
-                        <p class="info-value">Prem Kumar</p>
-                    </div>
-                    
-                    <div class="info-group">
-                        <label class="info-label">Education</label>
-                        <p class="info-value">Bachelor of Computer Applications (BCA)</p>
-                    </div>
-                    
-                    <div class="info-group">
-                        <label class="info-label">College</label>
-                        <p class="info-value">Muthayammal Memorial College of arts and science</p>
-                    </div>
-                    
-                    <div class="info-group">
-                        <label class="info-label">Location</label>
-                        <p class="info-value">Rasipuram</p>
-                    </div>
-                    
-                    <div class="info-group">
-                        <label class="info-label">Career Interests</label>
-                        <p class="info-value">Frontend Development, UI/UX Design, Web Applications</p>
-                    </div>
-                </div>
-                
-                <div class="about-description">
-                    <p>
-                        I am a dedicated BCA student with a strong passion for web development and creating beautiful user interfaces. With hands-on experience in HTML5, CSS3, and JavaScript, I focus on building responsive, accessible, and user-centric web applications.
-                    </p>
-                    <p>
-                        My approach combines clean code practices with modern design principles. I'm constantly learning new technologies and staying updated with industry trends to deliver high-quality solutions.
-                    </p>
-                    <p>
-                        I'm enthusiastic about collaborating with teams, taking on challenging projects, and contributing to meaningful digital products.
-                    </p>
-                    
-                    <a href="resume/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
-                </div>
-            </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            
-            <div class="skills-grid" id="skillsGrid">
-                <!-- Skills will be generated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates">
-        <div class="container">
-            <h2 class="section-title">Certificates & Achievements</h2>
-            
-            <div class="certificates-grid" id="certificatesGrid">
-                <!-- Certificates will be generated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Certificate Modal -->
-    <div class="modal" id="certModal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <img id="modalImage" src="" alt="Certificate" class="modal-image">
-        </div>
     </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <div>
-                            <h3>Email</h3>
-                            <a href="mailto:prem492006@gmail.com">prem492006@gmail.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <div>
-                            <h3>Phone</h3>
-                            <a href="tel:9384520074">+91 9384520074</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Rasipuram</p>
-                        </div>
-                    </div>
+</header>
+
+
+<!-- =========================================
+     HERO SECTION
+========================================== -->
+
+<main>
+
+    <section class="hero" id="home">
+
+        <!-- Animated background -->
+        <div class="hero-grid"></div>
+
+        <div class="hero-glow glow-one"></div>
+        <div class="hero-glow glow-two"></div>
+
+
+        <div class="container hero-container">
+
+            <!-- Hero Text -->
+
+            <div class="hero-content reveal">
+
+                <div class="availability-badge">
+
+                    <span class="status-dot"></span>
+
+                    Available for opportunities
+
                 </div>
-                
-                <div class="contact-social">
-                    <h3>Connect With Me</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/prem492006-jpg" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/s-e-prem-kumar-b8270532b " target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.736 0-9.646h3.554v1.348c.42-.648 1.36-1.573 3.322-1.573 2.432 0 4.261 1.579 4.261 4.977v5.894zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.71 0-.968.77-1.71 1.944-1.71 1.179 0 1.924.742 1.944 1.71 0 .952-.765 1.71-1.973 1.71zm1.586 11.597H3.73V9.859h3.193v10.593zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-                            </svg>
-                        </a>
-                    </div>
+
+
+                <p class="hero-small-text">
+                    HELLO, I'M
+                </p>
+
+
+                <h1 class="hero-title">
+
+                    Prem
+                    <span>Kumar.</span>
+
+                </h1>
+
+
+                <div class="hero-role">
+
+                    <span class="role-prefix">
+                        I'm a
+                    </span>
+
+                    <span
+                        class="typing-text"
+                        id="typingText">
+                    </span>
+
+                    <span class="typing-cursor">|</span>
+
                 </div>
+
+
+                <p class="hero-description">
+
+                    A passionate BCA student focused on
+                    <strong>frontend development</strong>,
+                    UI/UX design and building modern,
+                    responsive digital experiences.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#certificates"
+                        class="btn btn-primary">
+
+                        <span>Explore My Work</span>
+
+                        <span class="btn-arrow">↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="resume/resume.pdf"
+                        class="btn btn-outline"
+                        download>
+
+                        <span>Download Resume</span>
+
+                        <span>↓</span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Social links -->
+
+                <div class="hero-socials">
+
+                    <span class="social-label">
+                        FIND ME ON
+                    </span>
+
+
+                    <a
+                        href="https://github.com/prem492006-jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub">
+
+                        GitHub
+                    </a>
+
+
+                    <span class="social-divider">/</span>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/s-e-prem-kumar-b8270532b"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn">
+
+                        LinkedIn
+                    </a>
+
+                </div>
+
             </div>
-            
-            <div class="contact-form-container">
-                <h3>Send Me a Message</h3>
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/mzepdekd" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
+
+
+            <!-- Hero Image -->
+
+            <div class="hero-visual reveal">
+
+                <div class="profile-orbit orbit-one"></div>
+                <div class="profile-orbit orbit-two"></div>
+
+
+                <div class="profile-wrapper">
+
+                    <div class="profile-glow"></div>
+
+                    <div class="profile-frame">
+
+                        <img
+                            src="profile.png"
+                            alt="Prem Kumar - Frontend Developer"
+                            class="profile-img">
+
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
+
+                </div>
+
+
+                <!-- Floating cards -->
+
+                <div class="floating-card card-html">
+
+                    <span class="floating-icon">{"</>"}</span>
+
+                    <div>
+                        <strong>Frontend</strong>
+                        <small>Development</small>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                </div>
+
+
+                <div class="floating-card card-ui">
+
+                    <span class="floating-icon">✦</span>
+
+                    <div>
+                        <strong>UI / UX</strong>
+                        <small>Design</small>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-                <p class="form-note">Note: To enable email functionality, configure EmailJS or Formspree in script.js</p>
+
+                </div>
+
             </div>
+
         </div>
+
+
+        <!-- Scroll indicator -->
+
+        <a href="#about" class="scroll-indicator">
+
+            <span>SCROLL TO EXPLORE</span>
+
+            <span class="scroll-arrow">↓</span>
+
+        </a>
+
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Prem Kumar. All Rights Reserved.</p>
-            
-            <div class="footer-social">
-                <a href="[GitHub URL]" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
-                <a href="[LinkedIn URL]" target="_blank" rel="noopener noreferrer" title="LinkedIn">LinkedIn</a>
-            </div>
-            
-            <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-        </div>
-    </footer>
 
-    <script src="script.js"></script>
+    <!-- =========================================
+         ABOUT SECTION
+    ========================================== -->
+
+    <section class="about section" id="about">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        GET TO KNOW ME
+                    </p>
+
+                    <h2>
+                        About <span>Me</span>
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-layout">
+
+                <!-- About text -->
+
+                <div class="about-main reveal">
+
+                    <p class="about-intro">
+
+                        I'm a dedicated
+                        <strong>BCA student</strong>
+                        with a strong passion for web development
+                        and creating beautiful digital experiences.
+
+                    </p>
+
+
+                    <p>
+
+                        With hands-on experience in HTML5, CSS3
+                        and JavaScript, I enjoy building responsive,
+                        accessible and user-friendly web applications.
+
+                    </p>
+
+
+                    <p>
+
+                        My approach combines clean code with modern
+                        design principles. I'm constantly learning
+                        new technologies and exploring better ways
+                        to create meaningful digital products.
+
+                    </p>
+
+
+                    <p>
+
+                        I'm enthusiastic about collaborating with
+                        teams, taking on challenging projects and
+                        growing as a developer.
+
+                    </p>
+
+
+                    <a
+                        href="resume/resume.pdf"
+                        class="text-link"
+                        download>
+
+                        Download my resume
+
+                        <span>↗</span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Information cards -->
+
+                <div class="about-details reveal">
+
+                    <div class="detail-card">
+
+                        <span class="detail-icon">✦</span>
+
+                        <div>
+
+                            <span class="detail-label">
+                                NAME
+                            </span>
+
+                            <strong>
+                                Prem Kumar
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span class="detail-icon">⌘</span>
+
+                        <div>
+
+                            <span class="detail-label">
+                                EDUCATION
+                            </span>
+
+                            <strong>
+                                Bachelor of Computer Applications
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span class="detail-icon">◈</span>
+
+                        <div>
+
+                            <span class="detail-label">
+                                COLLEGE
+                            </span>
+
+                            <strong>
+                                Muthayammal Memorial College
+                                of Arts and Science
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span class="detail-icon">⌖</span>
+
+                        <div>
+
+                            <span class="detail-label">
+                                LOCATION
+                            </span>
+
+                            <strong>
+                                Rasipuram
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span class="detail-icon">⚡</span>
+
+                        <div>
+
+                            <span class="detail-label">
+                                INTERESTS
+                            </span>
+
+                            <strong>
+                                Frontend • UI/UX • Web Apps
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SKILLS SECTION
+    ========================================== -->
+
+    <section class="skills section" id="skills">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        WHAT I WORK WITH
+                    </p>
+
+                    <h2>
+                        Technical <span>Skills</span>
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="skills-grid"
+                id="skillsGrid">
+
+                <!-- Skills generated by JavaScript -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CERTIFICATES SECTION
+    ========================================== -->
+
+    <section
+        class="certificates section"
+        id="certificates">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        MY LEARNING JOURNEY
+                    </p>
+
+                    <h2>
+                        Certificates &
+                        <span>Achievements</span>
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="certificates-grid"
+                id="certificatesGrid">
+
+                <!-- Certificates generated by JavaScript -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CERTIFICATE MODAL
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="certModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Certificate preview">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Close certificate preview">
+
+                ×
+
+            </button>
+
+
+            <img
+                id="modalImage"
+                src=""
+                alt="Certificate preview"
+                class="modal-image">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         CONTACT SECTION
+    ========================================== -->
+
+    <section
+        class="contact section"
+        id="contact">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+
+                <span class="section-number">
+                    04
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        LET'S CONNECT
+                    </p>
+
+                    <h2>
+                        Get In <span>Touch</span>
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-layout">
+
+                <!-- Contact information -->
+
+                <div class="contact-info reveal">
+
+                    <h3>
+                        Have a project or opportunity
+                        in mind?
+                    </h3>
+
+
+                    <p>
+
+                        I'm always open to discussing
+                        new projects, creative ideas,
+                        internships and opportunities
+                        to be part of something meaningful.
+
+                    </p>
+
+
+                    <div class="contact-list">
+
+                        <a
+                            href="mailto:prem492006@gmail.com"
+                            class="contact-card">
+
+                            <span class="contact-card-icon">
+                                @
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    EMAIL
+                                </span>
+
+                                <strong>
+                                    prem492006@gmail.com
+                                </strong>
+
+                            </div>
+
+                            <span class="contact-arrow">
+                                ↗
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="tel:9384520074"
+                            class="contact-card">
+
+                            <span class="contact-card-icon">
+                                ☎
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    PHONE
+                                </span>
+
+                                <strong>
+                                    +91 9384520074
+                                </strong>
+
+                            </div>
+
+                            <span class="contact-arrow">
+                                ↗
+                            </span>
+
+                        </a>
+
+
+                        <div class="contact-card">
+
+                            <span class="contact-card-icon">
+                                ⌖
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    LOCATION
+                                </span>
+
+                                <strong>
+                                    Rasipuram
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-socials">
+
+                        <span>
+                            CONNECT
+                        </span>
+
+                        <a
+                            href="https://github.com/prem492006-jpg"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            GitHub ↗
+
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/s-e-prem-kumar-b8270532b"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            LinkedIn ↗
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Contact form -->
+
+                <div class="contact-form-wrapper reveal">
+
+                    <div class="form-header">
+
+                        <span>
+                            SEND A MESSAGE
+                        </span>
+
+                        <h3>
+                            Let's build something
+                            <span>great.</span>
+                        </h3>
+
+                    </div>
+
+
+                    <form
+                        class="contact-form"
+                        id="contactForm"
+                        action="https://formspree.io/f/mzepdekd"
+                        method="POST">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Your Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your name"
+                                    autocomplete="name"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Your Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    autocomplete="email"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="message">
+                                Your Message
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                placeholder="Tell me about your project..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary form-submit">
+
+                            <span>
+                                Send Message
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-container">
+
+        <div class="footer-brand">
+
+            <a href="#home" class="nav-logo">
+
+                <span class="logo-box">
+                    P
+                </span>
+
+                <span class="logo-name">
+                    Prem<span>.</span>
+                </span>
+
+            </a>
+
+            <p>
+                Designing. Developing. Learning.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#skills">
+                Skills
+            </a>
+
+            <a href="#certificates">
+                Certificates
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Prem Kumar. All Rights Reserved.
+            </p>
+
+            <p>
+                Built with HTML • CSS • JavaScript
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Back to top -->
+
+    <button
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top">
+
+        ↑
+
+    </button>
+
+</footer>
+
+
+<!-- Main JavaScript -->
+
+<script src="script.js"></script>
+```
+
 </body>
 </html>
